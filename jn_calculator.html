@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Mencari Jumlah Bilangan Natural</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      html {
+        overflow-x: hidden;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("img/subjek 1.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: "Goudy Old Style", serif;
+      }
+      .content {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .main-card {
+        background: rgba(2, 93, 146, 0.77);
+        border-radius: 10px;
+        width: 70%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px 0;
+      }
+      .secondary-card {
+        background: rgba(151, 202, 219, 0.2);
+        border-radius: 10px;
+        width: 95%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px 0;
+      }
+      .main-card h1 {
+        margin: 0;
+      }
+      .form-group {
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      .form-group label,
+      .form-group input,
+      .form-group select {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+      }
+      .form-group input,
+      .form-group select {
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: "Goudy Old Style", serif;
+      }
+      .back {
+        display: flex;
+        justify-content: flex-start;
+        width: 70%;
+      }
+      .back button {
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #b6e4ef;
+        color: black;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: "Goudy Stout", serif;
+      }
+      .back button:hover {
+        background-color: #0056b3;
+      }
+      .back a {
+        text-decoration: none;
+        color: black;
+        font-family: "Goudy Stout", serif;
+      }
+
+      .help-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #b6e4ef;
+        color: black;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        font-family: "Goudy Stout", serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .help-button:hover {
+        background-color: #0056b3;
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #b6e4ef;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .popup-content {
+        font-family: "Goudy Old Style", serif;
+        text-align: justify;
+      }
+
+      .popup-close {
+        display: block;
+        text-align: right;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="navbar-placeholder"></div>
+    </header>
+
+    <div class="content">
+      <div class="main-card">
+        <h1>Kalkulator Mencari Jumlah Bilangan Natural</h1>
+        <div class="secondary-card">
+          <div class="form-group">
+            <label for="jenis-bilangan">Jenis Bilangan Natural:</label>
+            <select id="jenis-bilangan">
+              <option value="pertama">Bilangan Natural Pertama</option>
+              <option value="kuadrat">Kuadrat Bilangan Natural Pertama</option>
+              <option value="pangkat-tiga">
+                Pangkat Tiga Bilangan Natural Pertama
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="pola-deret">Pola Deret:</label>
+            <select id="pola-deret">
+              <option value="berurutan">Deret Normal/Berurutan</option>
+              <option value="ganjil">Deret Ganjil</option>
+              <option value="genap">Deret Genap</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="jumlah-suku">Jumlah Suku (n):</label>
+            <input type="number" id="jumlah-suku" min="1" />
+          </div>
+          <div class="button-group">
+            <button onclick="hitungHasil()">Submit</button>
+            <button onclick="clearInput()">Clear</button>
+          </div>
+          <p id="hasil"></p>
+        </div>
+      </div>
+      <div class="back">
+        <button><a href="kalkulator.html">Back</a></button>
+      </div>
+      <button class="help-button" onclick="toggleHelpPopup()">?</button>
+    </div>
+    <div class="popup" id="help-popup">
+      <p>
+        Tentukan jenis bilangan apa yang akan dihitung. Jenis bilangan tersebut
+        terdiri dari bilangan natural pertama, kuadrat bilangan natural pertama,
+        dan pangkat tiga bilangan natural pertama. setelah menentukan jenis
+        bilangan apa yang akan dihitung, selanjutnya pilih pola deret-nya, yang
+        terdiri dari deret normal atau berurutan, deret ganjil, dan deret genap.
+        Setelah menentukan jenis bilangan natural dan pola deret-nya,
+        selanjutnya masukkan jumlah suku (n) yang akan dihitungnya. Terakhir,
+        tekan tombol "submit" untuk mendapatkan hasil dan tombol (clear) untuk
+        menghapus nilai jumlah suku-nya.
+      </p>
+      <button onclick="toggleHelpPopup()">Tutup</button>
+    </div>
+
+    <script>
+      function hitungJumlahBilanganNatural(n, pola = "berurutan") {
+        let total;
+        if (pola === "berurutan") {
+          total = (n * (n + 1)) / 2;
+        } else if (pola === "genap") {
+          total = 0;
+          for (let i = 2; i <= 2 * n; i += 2) {
+            total += i;
+          }
+        } else if (pola === "ganjil") {
+          total = 0;
+          for (let i = 1; i <= 2 * n; i += 2) {
+            total += i;
+          }
+        } else {
+          return "Pilihan pola tidak valid";
+        }
+        return total;
+      }
+
+      function hitungJumlahKuadrat(n, pola = "berurutan") {
+        let total;
+        if (pola === "berurutan") {
+          total = (n * (n + 1) * (2 * n + 1)) / 6;
+        } else if (pola === "genap") {
+          total = 0;
+          for (let i = 2; i <= 2 * n; i += 2) {
+            total += Math.pow(i, 2);
+          }
+        } else if (pola === "ganjil") {
+          total = 0;
+          for (let i = 1; i <= 2 * n; i += 2) {
+            total += Math.pow(i, 2);
+          }
+        } else {
+          return "Pilihan pola tidak valid";
+        }
+        return total;
+      }
+
+      function hitungJumlahPangkatTiga(n, pola = "berurutan") {
+        let total;
+        if (pola === "berurutan") {
+          total = Math.pow((n * (n + 1)) / 2, 2);
+        } else if (pola === "genap") {
+          total = 0;
+          for (let i = 2; i <= 2 * n; i += 2) {
+            total += Math.pow(i, 3);
+          }
+        } else if (pola === "ganjil") {
+          total = 0;
+          for (let i = 1; i <= 2 * n; i += 2) {
+            total += Math.pow(i, 3);
+          }
+        } else {
+          return "Pilihan pola tidak valid";
+        }
+        return total;
+      }
+
+      function hitungHasil() {
+        const jenisBilangan = document.getElementById("jenis-bilangan").value;
+        const polaDeret = document.getElementById("pola-deret").value;
+        const n = parseInt(document.getElementById("jumlah-suku").value);
+        if (isNaN(n) || n <= 0) {
+          alert("Masukkan jumlah suku yang valid.");
+          return;
+        }
+
+        let hasil;
+        if (jenisBilangan === "pertama") {
+          hasil = hitungJumlahBilanganNatural(n, polaDeret);
+          document.getElementById(
+            "hasil"
+          ).innerText = `Jumlah ${n} Bilangan ${jenisBilangan.replace(
+            "-",
+            " "
+          )} adalah: ${hasil}`;
+        } else if (jenisBilangan === "kuadrat") {
+          hasil = hitungJumlahKuadrat(n, polaDeret);
+          document.getElementById(
+            "hasil"
+          ).innerText = `Jumlah Kuadrat ${n} Bilangan ${jenisBilangan.replace(
+            "-",
+            " "
+          )} adalah: ${hasil}`;
+        } else if (jenisBilangan === "pangkat-tiga") {
+          hasil = hitungJumlahPangkatTiga(n, polaDeret);
+          document.getElementById(
+            "hasil"
+          ).innerText = `Jumlah Pangkat Tiga ${n} Bilangan ${jenisBilangan.replace(
+            "-",
+            " "
+          )} adalah: ${hasil}`;
+        } else {
+          document.getElementById("hasil").innerText =
+            "Pilihan jenis bilangan tidak valid.";
+        }
+      }
+
+      function clearInput() {
+        document.getElementById("jumlah-suku").value = "";
+        document.getElementById("hasil").innerText = "";
+      }
+
+      function toggleHelpPopup() {
+        const popup = document.getElementById("help-popup");
+        popup.style.display =
+          popup.style.display === "block" ? "none" : "block";
+      }
+    </script>
+  </body>
+</html>

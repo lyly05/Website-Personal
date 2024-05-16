@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @font-face {
+        font-family: "Goudy Stout";
+        src: url("path/to/GoudyStout.ttf") format("truetype");
+      }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100.0584%;
+        /* overflow: hidden; */
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url("img/Group 30.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: "Goudy Old Style", serif;
+      }
+
+      .fcontainer {
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 20px;
+        box-sizing: border-box;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: #9bd0fe;
+      }
+
+      .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 10px;
+        padding: 0;
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: row;
+        font-size: 18px;
+        padding: 0 15px;
+        text-transform: capitalize;
+      }
+
+      .judul {
+        color: #01182d;
+        font-weight: 700;
+        font-size: 38px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .navbar > li {
+        list-style: none;
+        padding: 5px;
+      }
+
+      .navbar > li > a {
+        color: #01182d;
+        font-size: 20px;
+        text-decoration: none;
+        text-transform: capitalize;
+      }
+
+      .navbar > li > a:hover {
+        color: azure;
+      }
+
+      .content {
+        margin-top: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: calc(1vh - 10px);
+        border-radius: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          overflow-y: auto;
+        }
+      }
+
+      /* Mobile styles for hamburger menu */
+      @media (max-width: 768px) {
+        .navbar {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+        }
+
+        .navbar > li {
+          padding: 10px;
+        }
+
+        .navbar.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+          padding: 10px;
+        }
+
+        .hamburger div {
+          width: 25px;
+          height: 3px;
+          background-color: #01182d;
+          margin: 4px;
+        }
+      }
+
+      /* Additional styles for About Us page */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 -15px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .column {
+        width: 100%;
+      }
+
+      .column {
+        flex: 1;
+        max-width: 300px;
+        margin: 15px;
+        box-sizing: border-box;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 800px;
+        margin: 20px auto;
+        color: #01182d;
+      }
+      img {
+        border-radius: 10px;
+      }
+
+      .container {
+        padding: 10px 0;
+      }
+
+      .clearfix {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Menyertakan navbar -->
+    <div class="fcontainer">
+      <nav class="wrapper">
+        <div class="brand">
+          <div class="judul">SEQUENCE CALCULATOR</div>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="navbar" id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="materi.html">Materi</a></li>
+          <li><a href="kalkulator.html">Calculator</a></li>
+          <li>
+            <a href="about.html"> <div class="underline-text">About Us</div></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Konten halaman -->
+    <div class="content">
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="img/Delely.jpg" alt="daffa" style="width: 100%" />
+            <div class="container">
+              <h2>Delely Rahmawati Hidayah</h2>
+              <p>237006006</p>
+              <p>237006006@student.unsil.ac.id</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <img src="img/profil1.jpg" alt="daffa" style="width: 100%" />
+            <div class="container">
+              <h2>Renasya Malkahaq ⠀⠀⠀⠀⠀</h2>
+              <p>237006007</p>
+              <p>237006007@student.unsil.ac.id</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <img src="img/dred.jpg" alt="daffa" style="width: 100%" />
+            <div class="container">
+              <h2>Daffa Bariq ⠀⠀Suwandi⠀⠀</h2>
+              <p>237006021</p>
+              <p>237006021@student.unsil.ac.id</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <img src="img/Rovi.jpg" alt="daffa" style="width: 100%" />
+            <div class="container">
+              <h2>Rovi Fauzan ⠀⠀⠀⠀⠀⠀⠀⠀</h2>
+              <p>237006022</p>
+              <p>237006022@student.unsil.ac.id</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <img src="img/Zaki.jpg" alt="daffa" style="width: 100%" />
+            <div class="container">
+              <h2>Muhammad Zaki Fadilla</h2>
+              <p>237006034</p>
+              <p>237006034@student.unsil.ac.id</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.getElementById("navbar");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

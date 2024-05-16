@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi Deret</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @font-face {
+        font-family: "Goudy Stout";
+        src: url("path/to/GoudyStout.ttf") format("truetype");
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url("img/Group 30.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: "Goudy Old Style", serif;
+      }
+
+      .fcontainer {
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 20px;
+        box-sizing: border-box;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: #9bd0fe;
+      }
+
+      .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 10px;
+        padding: 0;
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: row;
+        font-size: 18px;
+        padding: 0 15px;
+        text-transform: capitalize;
+      }
+
+      .judul {
+        color: #01182d;
+        font-weight: 700;
+        font-size: 38px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .navbar > li {
+        list-style: none;
+        padding: 5px;
+      }
+
+      .navbar > li > a {
+        color: #01182d;
+        font-size: 20px;
+        text-decoration: none;
+        text-transform: capitalize;
+      }
+
+      .navbar > li > a:hover {
+        color: azure;
+      }
+
+      .content {
+        margin-top: 80px;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          margin-top: 100px;
+        }
+      }
+
+      .main-card {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 800px;
+        margin: 20px auto;
+        color: #01182d;
+      }
+
+      .main-card h1 {
+        margin-bottom: 40px;
+        font-size: 2rem;
+      }
+
+      .sub-card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .sub-card-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .sub-card {
+        background: rgba(2, 93, 146, 0.77);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 20px;
+      }
+
+      .sub-card img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .sub-card h4 {
+        margin: 10px 0;
+        padding: 5px;
+        font-size: 1.2rem;
+      }
+
+      .sub-card button {
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #b6e4ef;
+        color: black;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-family: "Goudy Stout", serif;
+      }
+
+      .sub-card button:hover {
+        background-color: #0056b3;
+      }
+
+      .sub-card a {
+        text-decoration: none;
+        color: black;
+        font-family: "Goudy Stout", serif;
+      }
+
+      /* Mobile styles for hamburger menu */
+      @media (max-width: 768px) {
+        .navbar {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+        }
+
+        .navbar > li {
+          padding: 10px;
+        }
+
+        .navbar.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+          padding: 10px;
+        }
+
+        .hamburger div {
+          width: 25px;
+          height: 3px;
+          background-color: #01182d;
+          margin: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--Navbar-->
+    <div class="fcontainer">
+      <nav class="wrapper">
+        <div class="brand">
+          <div class="judul">SEQUENCE CALCULATOR</div>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="navbar" id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li>
+            <a href="materi.html">
+              <div class="underline-text">Materi</div>
+            </a>
+          </li>
+          <li><a href="kalkulator.html">Calculator</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content">
+      <div class="main-card">
+        <h1>MATERI DERET KALKULUS II</h1>
+        <div class="sub-card-container">
+          <div class="sub-card">
+            <img src="img/image 1.png" alt="Aritmatika 1" />
+            <h4>DERET ARITMATIKA</h4>
+            <button>
+              <a href="deret_aritmatika.html">START</a>
+            </button>
+          </div>
+          <div class="sub-card">
+            <img
+              src="img/01hb87m1e5ejbggcf05707tghp 1.png"
+              alt="Aritmatika 2"
+            />
+            <h4>DERET GEOMETRI</h4>
+            <button><a href="deret_geometri.html">START</a></button>
+          </div>
+          <div class="sub-card">
+            <img src="img/image 5.png" alt="Aritmatika 3" />
+            <h4>BILANGAN NATURAL</h4>
+            <button><a href="bilangan_natural.html">START</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.getElementById("navbar");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

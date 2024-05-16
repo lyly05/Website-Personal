@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Mencari Jumlah Deret (Sn)</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      html {
+        overflow-x: hidden;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("img/subjek 1.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: "Goudy Old Style", serif;
+      }
+      .content {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .main-card {
+        background: rgba(2, 93, 146, 0.77);
+        border-radius: 10px;
+        width: 70%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px 0;
+      }
+      .secondary-card {
+        background: rgba(151, 202, 219, 0.2);
+        border-radius: 10px;
+        width: 95%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 10px 0;
+      }
+      .main-card h1 {
+        margin: 0;
+      }
+      .form-group {
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      .form-group label,
+      .form-group input,
+      .form-group select {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+      }
+      .form-group input,
+      .form-group select {
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: "Goudy Old Style", serif;
+      }
+      .back {
+        display: flex;
+        justify-content: flex-start;
+        width: 70%;
+      }
+      .back button {
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #b6e4ef;
+        color: black;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: "Goudy Stout", serif;
+      }
+      .back button:hover {
+        background-color: #0056b3;
+      }
+      .back a {
+        text-decoration: none;
+        color: black;
+        font-family: "Goudy Stout", serif;
+      }
+
+      .help-button {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #b6e4ef;
+        color: black;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        font-family: "Goudy Stout", serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .help-button:hover {
+        background-color: #0056b3;
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #b6e4ef;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .popup-content {
+        font-family: "Goudy Old Style", serif;
+        text-align: justify;
+      }
+
+      .popup-close {
+        display: block;
+        text-align: right;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="navbar-placeholder"></div>
+    </header>
+
+    <div class="content">
+      <div class="main-card">
+        <h1>Kalkulator Mencari Jumlah Deret (Sn)</h1>
+        <div class="secondary-card">
+          <div class="form-group">
+            <label for="sn-type">Jenis Deret:</label>
+            <select id="sn-type" onchange="changeSnInputType()">
+              <option value="aritmatika">Aritmatika</option>
+              <option value="geometri">Geometri</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sn-a">Suku Pertama (a):</label>
+            <input type="number" id="sn-a" />
+          </div>
+          <div class="form-group">
+            <label for="sn-n">Jumlah Suku (n):</label>
+            <input type="number" id="sn-n" />
+          </div>
+          <div class="form-group" id="sn-d-box">
+            <label for="sn-d">Beda (d):</label>
+            <input type="number" id="sn-d" />
+          </div>
+          <div class="form-group" id="sn-r-box" style="display: none">
+            <label for="sn-r">Rasio (r):</label>
+            <input type="number" id="sn-r" />
+          </div>
+          <div class="button-group">
+            <button onclick="calculateSn()">Submit</button>
+            <button onclick="clearInput()">Clear</button>
+          </div>
+          <p id="sn-result"></p>
+        </div>
+      </div>
+      <div class="back">
+        <button><a href="kalkulator.html">Back</a></button>
+      </div>
+      <button class="help-button" onclick="toggleHelpPopup()">?</button>
+    </div>
+
+    <div class="popup" id="help-popup">
+      <p>
+        Masukkan data sesuai jenis deret yang dipilih. Untuk deret aritmatika,
+        masukkan suku pertama (a), jumlah suku (n), dan beda (d). Untuk deret
+        geometri, masukkan suku pertama (a), jumlah suku (n), dan rasio (r).
+        Tekan "Submit" untuk mendapatkan hasil dan tekan "Clear" untuk menghapus
+        input.
+      </p>
+      <button onclick="toggleHelpPopup()">Tutup</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // Fungsi untuk mengubah input berdasarkan jenis deret Sn
+      function changeSnInputType() {
+        const snType = document.getElementById("sn-type").value;
+        const snDBox = document.getElementById("sn-d-box");
+        const snRBox = document.getElementById("sn-r-box");
+
+        if (snType === "aritmatika") {
+          snDBox.style.display = "block";
+          snRBox.style.display = "none";
+        } else if (snType === "geometri") {
+          snDBox.style.display = "none";
+          snRBox.style.display = "block";
+        }
+      }
+
+      // Fungsi untuk menghitung jumlah deret (Sn)
+      function calculateSn() {
+        const snType = document.getElementById("sn-type").value;
+        const a = parseFloat(document.getElementById("sn-a").value);
+        const n = parseInt(document.getElementById("sn-n").value);
+        let result;
+
+        if (snType === "aritmatika") {
+          const d = parseFloat(document.getElementById("sn-d").value);
+          result = (n / 2) * (2 * a + (n - 1) * d);
+        } else if (snType === "geometri") {
+          const r = parseFloat(document.getElementById("sn-r").value);
+          if (r === 1) {
+            result = a * n; // Special case for r = 1 in geometric series
+          } else {
+            result = (a * (Math.pow(r, n) - 1)) / (r - 1);
+          }
+        }
+
+        document.getElementById("sn-result").innerText = "Result: " + result;
+      }
+
+      function clearInput() {
+        document.getElementById("sn-a").value = "";
+        document.getElementById("sn-n").value = "";
+        document.getElementById("sn-d").value = "";
+        document.getElementById("sn-r").value = "";
+        document.getElementById("sn-result").innerText = "";
+      }
+
+      function toggleHelpPopup() {
+        const popup = document.getElementById("help-popup");
+        popup.style.display =
+          popup.style.display === "block" ? "none" : "block";
+      }
+    </script>
+  </body>
+</html>

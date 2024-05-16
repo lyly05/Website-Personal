@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Deret</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @font-face {
+        font-family: "Goudy Stout";
+        src: url("path/to/GoudyStout.ttf") format("truetype");
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        background-image: url("img/menu.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: "Goudy Old Style", serif;
+      }
+
+      .fcontainer {
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 20px;
+        box-sizing: border-box;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: #98cfff;
+      }
+
+      .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 10px;
+        padding: 0;
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: row;
+        font-size: 18px;
+        padding: 0 15px;
+        text-transform: capitalize;
+      }
+
+      .judul {
+        color: black;
+        font-weight: 700;
+        font-size: 38px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .navbar > li {
+        list-style: none;
+        padding: 5px;
+      }
+
+      .navbar > li > a {
+        color: #01182d;
+        font-size: 20px;
+        text-decoration: none;
+        text-transform: capitalize;
+      }
+
+      .navbar > li > a:hover {
+        color: azure;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 4px;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          margin-top: 100px;
+        }
+      }
+
+      /* Mobile styles for hamburger menu */
+      @media (max-width: 768px) {
+        .navbar {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+        }
+
+        .navbar > li {
+          padding: 10px;
+        }
+
+        .navbar.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="fcontainer">
+      <nav class="wrapper">
+        <div class="brand">
+          <div class="judul">SEQUENCE CALCULATOR</div>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="navbar" id="navbar">
+          <li>
+            <a href="index.html"> <div class="underline-text">Home</div></a>
+          </li>
+          <li><a href="materi.html">Materi</a></li>
+          <li><a href="kalkulator.html">Calculator</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.getElementById("navbar");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

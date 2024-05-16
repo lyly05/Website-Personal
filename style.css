@@ -1,0 +1,125 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #2b698c;
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 5px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.fcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  padding: 15;
+  width: 100%;
+  background-color: transparent;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  padding: 15;
+  text-transform: capitalize;
+}
+
+.judul {
+  color: black;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar>li {
+  list-style: none;
+  padding: 15px;
+}
+
+.navbar>li>a {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.navbar>li>a:hover {
+  color: azure;
+}
+
+/* Five columns side by side */
+.column {
+  float: left;
+  width: 18%;
+  margin-bottom: 8px;
+  padding: 0 8px;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 350px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Some left and right padding inside the container */
+.container {
+  padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after,
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.underline-text {
+  text-decoration: underline;
+}
